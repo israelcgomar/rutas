@@ -3,15 +3,21 @@ var express = require("express");
 
 var app = express();
 
-	app.set("view engine" , "jade")
+	app.set("view engine" , "jade");
 
+//Verbos http => GET/POST/PUT/PATH/OPTIONS/HEADERS/DELETE
+////ARQUITECTURA REST
 	app.get("/",function(req,res){
 		res.render("index");
 		});
 
-	app.post("/"),function(req,res){
-		res.reneder("form");
-	});
+	app.get("/:nombre",function(req,res){
+		res.render("form",{nombre: req.params.nombre});
+		})
 
+
+	app.post("/",function(req,res){
+		res.render("form");
+		});
 
 	app.listen(8080);
